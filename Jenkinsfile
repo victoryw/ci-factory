@@ -4,9 +4,10 @@ node {
     }
 
     stage('CREATE SEED JOB') {
-        dsl {
-            external 'jobs/**/*Jobs.groovy'
-            additionalClasspath 'src/main/groovy'
-        }
+        jobDsl targets: ['./jobs/**/*.groovy'].join('\n'),
+                removedJobAction: 'DELETE',
+                removedViewAction: 'DELETE',
+                lookupStrategy: 'SEED_JOB',
+                additionalClasspath: 'src/main/groovy'
     }
 }
