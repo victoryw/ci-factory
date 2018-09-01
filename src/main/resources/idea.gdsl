@@ -1,0 +1,13 @@
+// enable DSL support in IDEA, see https://confluence.jetbrains.com/display/GRVY/Scripting+IDE+for+DSL+awareness
+
+def jobCtx = context(pathRegexp: /.*\/jobs\/.*groovy/)
+ctxInjection(jobCtx)
+def startUpCtx = context(pathRegexp: /.*\/src\/main\/.*groovy/)
+ctxInjection(startUpCtx)
+
+private ctxInjection(jobCtx) {
+    contributor(jobCtx, {
+        delegatesTo(findClass('javaposse.jobdsl.dsl.DslFactory'))
+    })
+}
+

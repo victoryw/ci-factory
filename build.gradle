@@ -11,17 +11,24 @@ plugins {
     id 'groovy'
 }
 
-dependencies {
-    // Use the latest Groovy version for building this library
-    compile 'org.codehaus.groovy:groovy-all:2.4.15'
-
-    // Use the awesome Spock testing and specification framework
-    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+repositories {
+    mavenCentral()
+    maven { url 'http://repo.jenkins-ci.org/releases/' }
+    jcenter()
 }
 
-// In this section you declare where to find the dependencies of your project
-repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+sourceSets {
+    jobs {
+        groovy {
+            srcDirs += 'src/jobs'
+            compileClasspath += main.compileClasspath
+        }
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.15'
+    compile "org.jenkins-ci.plugins:job-dsl-core:${jobDslVersion}"
 }
