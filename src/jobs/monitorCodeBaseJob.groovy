@@ -3,6 +3,6 @@ import javaposse.jobdsl.dsl.DslFactory
 
 def jobName = 'monitor-code-base'
 new MonitorJobBuilder().
-        jobName('test-with-code').
+        jobName(jobName).
         jobDescription(jobName).
         build(this as DslFactory)
