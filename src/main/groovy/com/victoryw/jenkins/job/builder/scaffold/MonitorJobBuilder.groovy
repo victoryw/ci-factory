@@ -13,7 +13,7 @@ class MonitorJobBuilder {
     String triggers;
     String validateFilesPath;
 
-    def build = { DslFactory dslFactory ->
+    Job build(DslFactory dslFactory) {
         dslFactory.job(jobName) {
             description jobDescription
             scm {
