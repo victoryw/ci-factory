@@ -1,6 +1,6 @@
 job('seed-job') {
     scm {
-        github('https://github.com/victoryw/ci-factory.git')
+        git('https://github.com/victoryw/ci-factory.git')
     }
 
     triggers {
@@ -11,6 +11,7 @@ job('seed-job') {
         dsl {
             external 'jobs/**/*Jobs.groovy'
             additionalClasspath 'src/main/groovy'
+            removedJobAction: 'DELETE'
         }
     }
 }
