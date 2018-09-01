@@ -12,31 +12,37 @@ class MonitorJobBuilder {
     String gitRemoteUrl;
     String triggers;
     String validateFilesPath;
+    String archiveArtifactsPath
 
     Job build(DslFactory dslFactory) {
+        assert gitRemoteUrl != null
+        assert triggers != null
+        assert validateFilesPath != null
+
         dslFactory.job(jobName) {
             description jobDescription
+
+
             scm {
                 git {
                     remote {
-                        if (gitRemoteUrl) {
-                            url gitRemoteUrl
-                        }
+                        url gitRemoteUrl
                     }
                 }
             }
 
             triggers {
-                if (triggers) {
-                    scm triggers
-                }
+                scm triggers
             }
 
             steps {
-                if (validateFilesPath) {
-                    shell("echo ${validateFilesPath}")
-                }
+                shell("ls -al ${validateFilesPath} >> ${archiveArtifactsPath}")
+            }
 
+            if(archiveArtifactsPath) {
+                publishers {
+                    archiveArtifacts archiveArtifactsPath
+                }
             }
         }
 

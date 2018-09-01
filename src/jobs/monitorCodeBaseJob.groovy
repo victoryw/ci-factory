@@ -8,5 +8,6 @@ new MonitorJobBuilder().
         jobDescription(jobName).
         gitRemoteUrl(codeRepo).
         triggers('H/2 * * * *').
-        validateFilesPath('./src/main').
+        validateFilesPath('./redis/src/main').
+        archiveArtifactsPath('1.out').
         build(this as DslFactory)
