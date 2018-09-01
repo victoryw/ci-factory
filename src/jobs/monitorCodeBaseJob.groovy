@@ -4,4 +4,4 @@ def jobName = 'monitor-code-base'
 new MonitorJobBuilder().
         jobName('test-with-code').
         jobDescription(jobName).
-        build()
+        build(this)
