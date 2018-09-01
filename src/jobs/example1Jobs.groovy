@@ -1,6 +1,6 @@
-job('simple-job').with {
+job('simple-executed-job').with {
     description('')
-    displayName('example-1')
+    displayName('simple-executed-job')
 
     steps {
         shell('echo "this is simple job"')
