@@ -28,7 +28,47 @@ sourceSets {
     }
 }
 
+configurations {
+    testPlugins {}
+
+    // see JENKINS-45512
+    testCompile {
+        exclude group: 'xalan'
+        exclude group: 'xerces'
+    }
+}
+
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.15'
     compile "org.jenkins-ci.plugins:job-dsl-core:${jobDslVersion}"
+
+    testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
+
+    testCompile('org.jenkins-ci.main:jenkins-test-harness:2.27') {
+        exclude group: 'org.netbeans.modules', module: 'org-netbeans-insane'
+    }
+
+    testCompile "org.jenkins-ci.plugins:job-dsl:${jobDslVersion}"
+    testCompile "org.jenkins-ci.plugins:job-dsl:${jobDslVersion}@jar"
+
+    testCompile "org.jenkins-ci.main:jenkins-war:${jenkinsVersion}"
+    testCompile 'org.jenkins-ci.plugins:structs:1.14@jar'
+}
+
+task resolveTestPlugins(type: Copy) {
+    from configurations.testPlugins
+    into new File(sourceSets.test.output.resourcesDir, 'test-dependencies')
+    include '*.hpi'
+    include '*.jpi'
+
+    doLast {
+        def baseNames = source.collect { it.name[0..it.name.lastIndexOf('.')-1] }
+        new File(destinationDir, 'index').setText(baseNames.join('\n'), 'UTF-8')
+    }
+}
+
+test {
+    inputs.files sourceSets.jobs.groovy.srcDirs
+    // set build directory for Jenkins test harness, JENKINS-26331
+    systemProperty 'buildDirectory', project.buildDir.absolutePath
 }
