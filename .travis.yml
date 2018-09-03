@@ -1,5 +1,5 @@
 language: groovy
-
+sudo: enabled
 install:
 	gradle assemble
 
