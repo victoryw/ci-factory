@@ -1,10 +1,6 @@
 language: groovy
-sudo: enabled
 
-jobs:
-	include:
-		- stage: install
-			script: gradle assemble
-		- stage: test
-			script: gradle test
+script:
+	- gradle assemble
+	- gradle test
 
