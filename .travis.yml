@@ -1,0 +1,9 @@
+language: groovy
+
+install:
+	gradle assemble
+
+jobs:
+	- stage: test
+	  script: gradle test
+
