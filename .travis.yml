@@ -1,6 +1,4 @@
 language: groovy
-
 script:
-	- gradle assemble
-	- gradle test
+	- ./gradlew test
 
