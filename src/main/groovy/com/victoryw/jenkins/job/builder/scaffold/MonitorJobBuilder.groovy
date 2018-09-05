@@ -36,20 +36,20 @@ class MonitorJobBuilder {
             }
 
             steps {
-                shell('''
-if [ ! -f "$myFile" ]; then 
-    rm 1.out
-fi
-echo \${BUILD_NUMBER} > 1.out''')
-
                 copyArtifacts(jobName) {
                     includePatterns(archiveArtifactsPath)
                     targetDirectory('latestSucceed/')
                     flatten()
                     buildSelector {
-                        latestSuccessful(true)
+                        workspace()
                     }
                 }
+
+                shell('''
+if [ ! -f "$myFile" ]; then 
+    rm 1.out
+fi
+echo \${BUILD_NUMBER} > 1.out''')
 
                 shell("cat latestSucceed/${archiveArtifactsPath}")
             }
