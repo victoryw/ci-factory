@@ -37,6 +37,17 @@ class MonitorJobBuilder {
 
             steps {
                 shell("ls -al ${validateFilesPath} >> ${archiveArtifactsPath}")
+
+                copyArtifacts(jobName) {
+                    includePatterns(archiveArtifactsPath)
+                    targetDirectory('latestSucceed/')
+                    flatten()
+                    buildSelector {
+                        latestSuccessful(true)
+                    }
+                }
+
+                shell("cat latestSucceed/${archiveArtifactsPath}")
             }
 
             if(archiveArtifactsPath) {
