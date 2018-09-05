@@ -12,7 +12,8 @@ class MonitorJobBuilder {
     String gitRemoteUrl;
     String triggers;
     String validateFilesPath;
-    String archiveArtifactsPath
+    String archiveArtifactsPath;
+    String builderNumber;
 
     Job build(DslFactory dslFactory) {
         assert gitRemoteUrl != null
@@ -36,7 +37,7 @@ class MonitorJobBuilder {
             }
 
             steps {
-                shell("echo ${BUILD_NUMBER} >> 1.out")
+                shell("echo " + builderNumber + " >> 1.out")
 
                 copyArtifacts(jobName) {
                     includePatterns(archiveArtifactsPath)
