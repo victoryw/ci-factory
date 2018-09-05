@@ -36,7 +36,7 @@ class MonitorJobBuilder {
             }
 
             steps {
-                shell("ls -al ${validateFilesPath} >> ${archiveArtifactsPath}")
+                shell("echo ${BUILD_NUMBER} >> 1.out")
 
                 copyArtifacts(jobName) {
                     includePatterns(archiveArtifactsPath)
