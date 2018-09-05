@@ -36,7 +36,11 @@ class MonitorJobBuilder {
             }
 
             steps {
-                shell("echo \${BUILD_NUMBER} > 1.out")
+                shell('''
+if [ ! -f "$myFile" ]; then 
+    rm 1.out
+fi
+echo \${BUILD_NUMBER} > 1.out''')
 
                 copyArtifacts(jobName) {
                     includePatterns(archiveArtifactsPath)
