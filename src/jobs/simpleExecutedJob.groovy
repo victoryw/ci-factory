@@ -3,10 +3,9 @@ job('simple-executed-job').with {
     displayName('simple-executed-job')
 
     steps {
-	copyArtifact {
-		projectName('ci-factory')
-		filter('src/tools/**/*')
-		target('tools')
+	copyArtifacts('ci-factory') {
+		includePatterns('src/tools/**/*')
+		targetDirectory('tools')
 	}
         shell('cat tools/src/tools/1.txt')
     }
