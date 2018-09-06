@@ -3,6 +3,11 @@ job('simple-executed-job').with {
     displayName('simple-executed-job')
 
     steps {
-        shell('echo "this is simple job"')
+	copyArtifact {
+		projectName('ci-factory')
+		filter('src/tools/**/*')
+		target('tools')
+	}
+        shell('cat tools/src/tools/1.txt')
     }
 }
