@@ -1,4 +1,4 @@
-package simple_executed_job
+package simple.excuted.job
 
 job('simple-executed-job').with {
     description('')
