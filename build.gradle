@@ -26,6 +26,12 @@ sourceSets {
         compileClasspath += sourceSets.main.output
         runtimeClasspath += sourceSets.main.output
     }
+
+    tools {
+        groovy {
+            srcDirs += 'src/tools'
+        }
+    }
 }
 
 configurations {

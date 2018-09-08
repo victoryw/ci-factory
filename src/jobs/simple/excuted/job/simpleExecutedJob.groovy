@@ -6,12 +6,7 @@ job('simple-executed-job').with {
 
     steps {
         copyArtifacts('ci-factory') {
-            includePatterns('src/tools/**/*')
-            targetDirectory('tools')
-        }
-
-        copyArtifacts('ci-factory') {
-            includePatterns('src/jobs/simple/excuted/job/tools/WriteIncrementalNumberToFile.groovy')
+            includePatterns('src/tools/simple/excuted/job/WriteIncrementalNumberToFile.groovy')
             targetDirectory('tools')
             flatten()
         }

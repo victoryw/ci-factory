@@ -1,4 +1,4 @@
-package simple.excuted.job.tools
+package simple.excuted.job
 
 def currentNumber = 0;
 def filePath = './result/incremental-result.out'

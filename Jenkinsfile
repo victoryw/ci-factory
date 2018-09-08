@@ -3,17 +3,13 @@ node {
         git url: ' https://github.com/victoryw/ci-factory.git'
     }
 
-    stage('UPLOAD FILE') {
+    stage('UPLOAD TOOLS') {
         archiveArtifacts artifacts: 'src/tools/**/*', onlyIfSuccessful: true
-    }
-
-    stage('JOB TOOLS') {
-        archiveArtifacts artifacts: 'src/jobs/*/tools/**/*', onlyIfSuccessful: true
     }
 
 
     stage('CREATE SEED JOB') {
-        jobDsl targets: ['./src/jobs/**/*.groovy'].join('\n'),
+        jobDsl targets: ['./src/jobs/*/*.groovy'].join('\n'),
                 removedJobAction: 'DELETE',
                 removedViewAction: 'DELETE',
                 lookupStrategy: 'SEED_JOB',
