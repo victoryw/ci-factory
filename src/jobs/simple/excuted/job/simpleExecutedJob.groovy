@@ -16,6 +16,7 @@ job(jobName).with {
             includePatterns('result/incremental-result.out')
             targetDirectory('lastSucceed')
             flatten()
+            optional()
         }
 
         groovyScriptFile('./tools/WriteIncrementalNumberToFile.groovy')
