@@ -1,32 +1,43 @@
 package simple.excuted.job
 
 def jobName = 'simple-executed-job'
+def resultFileName = 'incremental-result.out'
+def resultFileFolderPath = 'result/'
+def resultFilePath = "$resultFileFolderPath$resultFileName"
+def lastSucceedFileFolderPath = 'lastSucceed/'
+def lastSucceedFilePath = "$lastSucceedFileFolderPath$resultFileName"
+
+def toolScriptName = 'WriteIncrementalNumberToFile.groovy'
+def toolLocalFolderName="tools/"
+def tooScriptPath= "$toolLocalFolderName$toolScriptName"
 job(jobName).with {
     description('')
     displayName(jobName)
 
     steps {
         copyArtifacts('ci-factory') {
-            includePatterns('src/tools/simple/excuted/job/WriteIncrementalNumberToFile.groovy')
-            targetDirectory('tools')
+            includePatterns("src/tools/simple/excuted/job/$toolScriptName")
+            targetDirectory(toolLocalFolderName)
             flatten()
         }
 
         copyArtifacts(jobName) {
-            includePatterns('result/incremental-result.out')
-            targetDirectory('lastSucceed')
+            includePatterns(resultFilePath)
+            targetDirectory(lastSucceedFileFolderPath)
             flatten()
             optional()
         }
 
-        groovyScriptFile('./tools/WriteIncrementalNumberToFile.groovy') {
-            groovyInstallation('groovy-2.4.15')
+        groovyScriptFile(tooScriptPath) {
+            groovyInstallation('groovy')
+            scriptParam(lastSucceedFilePath)
+            scriptParam(resultFilePath)
         }
 
         publishers {
             archiveArtifacts {
                 onlyIfSuccessful(true)
-                pattern("result/**/*")
+                pattern(resultFilePath)
             }
         }
     }

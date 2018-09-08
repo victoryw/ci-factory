@@ -1,7 +1,12 @@
 package simple.excuted.job
 
-static def getLastSucceedResult() {
-    def lastSucceedFilePath = './lastSucceed/incremental-result.out'
+
+assert args.size() == 2
+def lastSucceedFilePath = args[0]
+def filePath = args[1]
+
+static def getLastSucceedResult(String lastSucceedFilePath) {
+
     def lastSucceedFile = new File(lastSucceedFilePath)
     if (lastSucceedFile.exists()) {
         return lastSucceedFile.withReader {
@@ -11,8 +16,7 @@ static def getLastSucceedResult() {
     null
 }
 
-static void writeCurrentNumberToFile(int currentNumber) {
-    def filePath = './result/incremental-result.out'
+static void writeCurrentNumberToFile(int currentNumber, String filePath) {
     def file = new File(filePath)
     def parentFolder = file.parentFile
     if (!parentFolder.exists()) {
@@ -24,8 +28,8 @@ static void writeCurrentNumberToFile(int currentNumber) {
     file << currentNumber
 }
 
-Integer lastSucceedResult = getLastSucceedResult();
+Integer lastSucceedResult = getLastSucceedResult(lastSucceedFilePath);
 def currentNumber = 1 + (lastSucceedResult == null ? 0 : lastSucceedResult);
-writeCurrentNumberToFile(currentNumber)
+writeCurrentNumberToFile(currentNumber, filePath)
 
 
