@@ -19,7 +19,9 @@ job(jobName).with {
             optional()
         }
 
-        groovyScriptFile('./tools/WriteIncrementalNumberToFile.groovy')
+        groovyScriptFile('./tools/WriteIncrementalNumberToFile.groovy') {
+            groovyInstallation('groovy-2.4.15')
+        }
 
         publishers {
             archiveArtifacts {
