@@ -1,8 +1,9 @@
 package simple.excuted.job
 
-job('simple-executed-job').with {
+def jobName = 'simple-executed-job'
+job(jobName).with {
     description('')
-    displayName('simple-executed-job')
+    displayName(jobName)
 
     steps {
         copyArtifacts('ci-factory') {
@@ -10,7 +11,20 @@ job('simple-executed-job').with {
             targetDirectory('tools')
             flatten()
         }
-        shell('cat tools/src/tools/1.txt')
-        shell('cat ./tools/WriteIncrementalNumberToFile.groovy')
+
+        copyArtifacts(jobName) {
+            includePatterns('result/incremental-result.out')
+            targetDirectory('lastSucceed')
+            flatten()
+        }
+
+        groovyScriptFile('./tools/WriteIncrementalNumberToFile.groovy')
+
+        publishers {
+            archiveArtifacts {
+                onlyIfSuccessful(true)
+                pattern("result/**/*")
+            }
+        }
     }
 }
