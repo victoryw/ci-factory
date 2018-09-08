@@ -26,6 +26,9 @@ job(jobName).with {
             targetDirectory(lastSucceedFileFolderPath)
             flatten()
             optional()
+            buildSelector {
+                workspace()
+            }
         }
 
         groovyScriptFile(tooScriptPath) {
@@ -36,7 +39,6 @@ job(jobName).with {
 
         publishers {
             archiveArtifacts {
-                onlyIfSuccessful(true)
                 pattern(resultFilePath)
             }
         }

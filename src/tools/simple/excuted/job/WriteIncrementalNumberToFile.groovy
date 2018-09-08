@@ -13,7 +13,7 @@ static def getLastSucceedResult(String lastSucceedFilePath) {
             return it.readLine() as Integer
         }
     }
-    null
+    0
 }
 
 static void writeCurrentNumberToFile(int currentNumber, String filePath) {
@@ -29,7 +29,11 @@ static void writeCurrentNumberToFile(int currentNumber, String filePath) {
 }
 
 Integer lastSucceedResult = getLastSucceedResult(lastSucceedFilePath);
-def currentNumber = 1 + (lastSucceedResult == null ? 0 : lastSucceedResult);
+def currentNumber = 1 + lastSucceedResult;
 writeCurrentNumberToFile(currentNumber, filePath)
+
+if (currentNumber > lastSucceedResult) {
+    throw new Exception('new number is beyond than old one')
+}
 
 
