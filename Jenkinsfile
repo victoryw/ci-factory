@@ -9,7 +9,7 @@ node {
 
 
     stage('CREATE SEED JOB') {
-        jobDsl targets: ['./src/jobs/*/*.groovy'].join('\n'),
+        jobDsl targets: ['./src/jobs/**/*.groovy'].join('\n'),
                 removedJobAction: 'DELETE',
                 removedViewAction: 'DELETE',
                 lookupStrategy: 'SEED_JOB',
