@@ -30,10 +30,10 @@ job(jobName){
             optional(true)
         }
 
-        def toolsFolder = new File('tools')
+
 
         groovyScriptFile('./tools/TequliaReportAnalyzer') {
-            classpath(toolsFolder.absolutePath)
+            classpath('$WORKSPACE/tools')
             groovyInstallation('groovy')
             scriptParam('demo/tequlia-java-db.out')
             scriptParam('demo/non-claim-java-to-db.out')
