@@ -5,7 +5,7 @@ def jobName = 'cbs-cpd-check'
 def trigger = 'H/2 * * * *'
 def cpdRuleWrapperPath = './tools/src/tools/cpd-rule.sh'
 def toolsSourceJobName = 'ci-factory';
-def pmdScriptPath = '/pmd/bin/Run.sh'
+def pmdScriptPath = '/pmd/bin/run.sh'
 def cpdSrcPath = './src'
 
 def resultFolder = 'result/'
@@ -21,7 +21,7 @@ job(jobName) {
 
     new ScmBlock().
             branchName('master').
-            repoUrl('https://github.com/victoryw/spring-boot-quartz-example.git').
+            repoUrl('https://github.com/victoryw/spring-boot-openid-example.git').
             createScmBlock(delegate)
 
 
@@ -53,7 +53,7 @@ job(jobName) {
         """)
 
         shell("chmod +x ${cpdRuleWrapperPath}")
-        shell("${cpdRuleWrapperPath} ${pmdScriptPath} ${cpdSrcPath} ${currentCpdDetailReportFilePath}")
+        shell("${cpdRuleWrapperPath} ${pmdScriptPath} ${cpdSrcPath} ${currentCpdDetailReportFilePath} 10")
 
         groovyScriptFile("tools/src/tools/CountCPD.groovy") {
             groovyInstallation('groovy')

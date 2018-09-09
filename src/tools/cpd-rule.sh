@@ -1,7 +1,7 @@
  #!/bin/bash
 
 
-$1 cpd --minimum-tokens 300 --files $2 > $3
+$1 cpd --minimum-tokens $4 --files $2 > $3
 
 status=$?
 
