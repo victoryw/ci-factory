@@ -9,7 +9,8 @@ job(jobName){
 
     steps {
         copyArtifacts('ci-factory') {
-            includePatterns("src/demo/tequlia-java-db.out")
+            includePatterns("src/demo/tequlia-java-db.out",
+                    "src/demo/non-claim-java-to-db.out")
             targetDirectory('demo')
             flatten()
         }
@@ -30,6 +31,7 @@ job(jobName){
         groovyScriptFile('tools/TequliaReportAnalyzer') {
             groovyInstallation('groovy')
             scriptParam('demo/tequlia-java-db.out')
+            scriptParam('demo/non-claim-java-to-db.out')
             scriptParam("result/${dailyReportFileName}")
             scriptParam("lastSucceed/${dailyReportFileName}")
         }

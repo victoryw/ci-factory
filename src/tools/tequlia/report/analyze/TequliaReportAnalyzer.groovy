@@ -1,13 +1,18 @@
 package tequlia.report.analyze
 
-assert args.size() == 3
+assert args.size() == 4
 def claimToOtherDbFilePath = args[0]
-def outFilePath = args[1]
-def lastSucceedOutFilePath = args[2]
+def nonClaimToOtherDbFilePath = args[1]
+def outFilePath = args[2]
+def lastSucceedOutFilePath = args[3]
 
 def claimJavaToDbDepend = resolveJavaToDbFile(claimToOtherDbFilePath)
+def nonClaimJavaToDbDepend = resolveJavaToDbFile(nonClaimToOtherDbFilePath)
 print("source is $claimJavaToDbDepend.source, sp is $claimJavaToDbDepend.sp, table is $claimJavaToDbDepend.table")
-outputToCsv(outFilePath, lastSucceedOutFilePath, claimJavaToDbDepend.sp, claimJavaToDbDepend.table)
+print("source is $nonClaimJavaToDbDepend.source, sp is $nonClaimJavaToDbDepend.sp, table is $nonClaimJavaToDbDepend.table")
+outputToCsv(outFilePath, lastSucceedOutFilePath,
+        claimJavaToDbDepend.sp, claimJavaToDbDepend.table,
+        nonClaimJavaToDbDepend.sp, nonClaimJavaToDbDepend.table)
 
 enum RowContentType {
     SP,
@@ -76,7 +81,9 @@ static def resolveJavaToDbFile(String filePath) {
 
 static def outputToCsv(String outputCsvPath, String lastSucceedOutFilePath,
                        int claimJavaToOtherSpCount,
-                       int claimJavaToOtherTableCount) {
+                       int claimJavaToOtherTableCount,
+                       int nonClaimJavaToOtherSpCount,
+                       int nonClaimJavaToOtherTableCount) {
     def csvFile = new File(outputCsvPath);
     if (csvFile.exists()) {
         csvFile.delete()
@@ -86,7 +93,7 @@ static def outputToCsv(String outputCsvPath, String lastSucceedOutFilePath,
     csvFile.parentFile.mkdir()
     if (!lastCsvFile.exists()) {
         csvFile.withWriter {
-            out -> out.println 'Date, claimJavaToOtherSp, claimJavaToOtherTable'
+            out -> out.println 'Date, claimJavaToOtherSp, claimJavaToOtherTable, nonClaimJavaToOtherSp, nonClaimJavaToOtherTable'
         }
     } else {
         csvFile << lastCsvFile.text
@@ -94,7 +101,11 @@ static def outputToCsv(String outputCsvPath, String lastSucceedOutFilePath,
 
     def today = new Date().format('yyyy-MM-dd')
 
+    def todayRecord = "$today, $claimJavaToOtherSpCount, $claimJavaToOtherTableCount, " +
+            "$nonClaimJavaToOtherSpCount, $nonClaimJavaToOtherTableCount"
+
     csvFile.withWriterAppend {
-        out -> out.println "$today, $claimJavaToOtherSpCount, $claimJavaToOtherTableCount"
+        out ->
+            out.println todayRecord
     }
 }

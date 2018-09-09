@@ -1,0 +1,422 @@
+PKG_LIFE_CLAIM_BATCH : 3
+  P_END_BATCH : 1
+  P_UPDATE_IMAGE : 1
+  P_UPDATE_INSPECT : 1
+PKG_LIFE_CLAIM_INTERFACE : 1
+  P_CREATE_CLAIM_DATA_LETTER : 1
+PKG_LIFE_CLAIM_STD : 5
+  P_FINISH_VOTE_BATCH_CLAIM_CASE : 1
+  P_FINISH_VOTE_CLAIM_CASE : 1
+  P_VOTE_CLOSED_BATCH : 1
+  P_VOTE_CLOSED_CASE : 2
+PKG_LIFE_HI_LIABI_INTERFACE : 3
+  P_DELETE_GRP_HI_LIABI_INFO : 1
+  P_UPDATE_GRP_POL_ITEM_ID : 1
+  P_UPDATE_POL_ITEM_ID : 1
+PKG_LIFE_UW_CLAIM_INTERFACE : 5
+  P_IMPORT_DATA_FROM_CLAIM : 1
+  P_IS_CLAIM_CANCEL : 1
+  P_PS_CANCEL_REPRESENTALTER : 1
+  P_PS_REG_ENDBYINSURERALTER : 1
+  P_PS_REPRESENTALTER_UW : 1
+
+-----------
+BatchTransferDAO.java
+GroupPreEntryBean.java
+MinusInsurantDAO.java
+ClaimBatchRejectBean.java
+GroupLifePolicyInsurant.java
+AddNewPSDAO.java
+UwDAOImpl.java
+UwProcessDAO.java
+ClaimBatchBean.java
+ClaimCaseRejectBean.java
+ReceiveClaimDAO.java
+DimissionDAO.java
+NormalCancelDAO.java
+ClaimDataDao.java
+GroupingInsurantMaintainDAO.java
+UwDataInterfaceDAOImpl.java
+
+-----------
+T_ACC_RISK_CLAIMINF_SUB : 2
+T_ACC_RISK_CLAIM_INFO : 6
+T_BATCH_LIAB : 11
+T_CIRCAS_CLAIM_MAIN : 12
+T_CIRCAS_CLAIM_REPORT : 1
+T_CIRCAS_CLAIM_SETTLED : 11
+T_CIRC_PROD_LIAB : 13
+T_CIRC_PROD_LIAB_MAP : 18
+T_CLAIM_ADJUST : 10
+T_CLAIM_APPLY_TYPE : 1
+T_CLAIM_BACK_ENTRY : 1
+T_CLAIM_BACK_TYPE : 1
+T_CLAIM_BANK_ACCOUNT : 3
+T_CLAIM_BATCH : 31
+T_CLAIM_CASE : 207
+T_CLAIM_CUSTOMER : 15
+T_CLAIM_DUE : 3
+T_CLAIM_DUE_FB : 6
+T_CLAIM_ESTIMATE : 10
+T_CLAIM_FEE : 51
+T_CLAIM_INSPECT : 9
+T_CLAIM_INSPECTION : 15
+T_CLAIM_INSPECT_EXT : 1
+T_CLAIM_INSPECT_OPERATION : 1
+T_CLAIM_LEVEL : 8
+T_CLAIM_LIMIT : 6
+T_CLAIM_OLD_NEW_RELATION : 5
+T_CLAIM_OPT_LOG : 1
+T_CLAIM_PAY : 36
+T_CLAIM_PAY_LIMIT : 1
+T_CLAIM_POLICY : 45
+T_CLAIM_POLICY_SEPARATE : 1
+T_CLAIM_PRODUCT : 70
+T_CLAIM_RECTIFY_REASON : 1
+T_CLAIM_REPORT : 9
+T_CLAIM_TYPE : 1
+T_CONTRACT_GROUP_LIAB_HI : 10
+T_CONTRACT_GROUP_LIAB_HI_LOG : 3
+T_CONTRACT_LIAB_PAY_PARAM : 15
+T_CONTRACT_LIAB_PAY_PARA_LOG : 29
+T_CONTRACT_MASTER_LIAB_HI : 37
+T_CONTRACT_MASTER_LIAB_HI_LOG : 42
+T_DUMMY_POL_LIAB_HI : 4
+T_DUMMY_POL_LIAB_HI_LOG : 8
+T_DUMMY_POL_LIAB_PAY_PA : 4
+T_DUMMY_POL_LIAB_PAY_PA_LOG : 8
+T_FBP_CLAIM_OPER_RECORD : 2
+T_GCLM_CASE : 3
+T_GROUP_CLAIM_CASE : 13
+T_GROUP_CLAIM_CUSTOMER : 13
+T_GROUP_CLAIM_POLICY : 6
+T_GROUP_CLAIM_PRODUCT : 12
+T_GROUP_LIAB_ASSUMPSIT : 1
+T_GROUP_POLICY_LIAB_HI : 12
+T_GRP_DUMMY_POL_LIAB_HI : 11
+T_GRP_DUMMY_POL_LIAB_PAY_PA : 14
+T_LIABILITY : 69
+T_LIABILITY_CATEGORY : 3
+T_LIABILITY_CHANGE : 10
+T_LIABILITY_CONFIG : 37
+T_LIABILITY_LIST : 7
+T_LIABILITY_PAY : 10
+T_LIABILITY_PAY_EXT : 3
+T_LIABILITY_REDUCE : 7
+T_LIABILITY_STATUS : 95
+T_LIAB_ACCUTOR_DEF : 26
+T_LIAB_MUTEX_DEF : 6
+T_LIAB_PAY_PARAM : 45
+T_LIAB_PAY_RELATIVE : 17
+T_MCLM_CASE : 7
+T_NEW_LIAB_DISABILITY_CONFIG : 1
+T_PAY_LIABILITY : 25
+T_POLICY_LIAB_HI : 179
+T_POLICY_LIAB_PAY_PARAM : 23
+T_POLICY_PRD_LIAB_PARAM : 7
+T_POLICY_PRINT_LIAB : 1
+T_POLICY_PRODUCT_LIABS : 20
+T_POLICY_PRODUCT_LIABS_LOG : 28
+T_POLICY_PROD_LIAB : 4
+T_PRODUCT_LIABILITY : 11
+T_PRODUCT_LIABILITY_CHANGE : 15
+T_PRODUCT_LIAB_CONFIG : 6
+T_PROD_RATE_LIAB : 5
+T_UW_GROUP_POLICY_LIAB_HI : 7
+T_UW_POLICY_LIAB_HI : 7
+
+-----------
+../../cbs/cbs/src/main/java/com/ebao/life/ps/common/process/dao/ProductProcessDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/payment/branch/claim/entry/ClaimPaymentDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/letters/pub/search/SearchPageDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/letters/query/GeneLetterQueryDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/product/normalliab/NormalLiabilityDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/reduceaccountvalue/ReduceAccountValueDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/claimreport/ClaimReportDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/yibaotong/service/claim/inspect/MeicalInspectBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/wizard/changerecordentry/FillFormModleMethod.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/groupoper/claim/claimcover/dao/ClaimCoverDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/agent/report/AgentReportDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/product/productlife/ProductLifeDefineDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/common/framework/UnitsData.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/turninretirement/TurnInRetirementDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/specialmap/web/QueryAction.java
+../../cbs/cbs/src/main/java/com/ebao/life/servlet/pub/image/VideoUploadDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/customer/CustomerMergeDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ebiz2/claimquery/ClaimQueryImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/dimission/DimissionDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/alterscheme/AlterSchemeDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/uw/query/UwQueryDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/webservice/engine/model/core/PayLiabilityBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/claimcase/ClaimCaseDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/print/batchprint/indi/policyPrint/PolicyPrintDaoImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/servlet/pub/image/ImDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/yibaotong/service/cs/groupinginsurantmaintain/GroupingInsurantProcess.java
+../../cbs/cbs/src/main/java/com/ebao/life/account/accountmanage/AccountManageDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/claim/group/CaseStatus.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/appentry/indv/IndividualAppEntryBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/payment/branch/entry/ReceiveClaimDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/statement/customer/CustomerStatementDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/dao/query/QueryDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/groupclaimcase/GroupClaimCaseDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/appentry/group/GroupAppEntryBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/claimfee/ClaimFeeDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/changeplan/ChangePlanDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/letters/sendletters/SendLettersDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/unitpolicymerge/UnitPolicyMergeDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/webservice/engine/model/core/LiabMutexDefBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/abnormalpolicy/abnormalpolicyrefund/AbnormalPolicyFullRefundDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/claim/ClaimNotice.java
+../../cbs/cbs/src/main/java/com/ebao/life/fb/claim/report/ClaimReportDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/common/groupingmaintain/groupingbasicinfo/DummyInsurantDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/finance/branch/FundChargeConfirmBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/callcenter/claim/CallcenterClaimDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/omnipartialsurrender/OmniPartialSurrenderDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/letters/print/XMLGenerator.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/checksysconfig/dao/CheckSysConfigDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/liabmap/web/QueryAction.java
+../../cbs/cbs/src/main/java/com/ebao/life/uw/policy/UwDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/pub/lock/BusinessLock.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/claimcustomer/ClaimCustomerDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/grouppolicyliabhi/GroupPolicyLiabHiDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/changeannuitydrawage/ChangeAnnuityDrawAgeDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/singleaddinsured/SingleAddInsuredDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/servlet/newbiz/uw/UwAttachServlet.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/claim/CaseCompute.java
+../../cbs/cbs/src/main/java/com/ebao/life/ecifcustomer/EcifCustomerMergeDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/policypool/UwPolicyPoolDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/yibaotong/service/insurantrealized/InsurantListProcessDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/maintaininsurant/MaintainInsurantDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/liabmap/web/InitLiabMappingAction.java
+../../cbs/cbs/src/main/java/com/ebao/life/servlet/pub/image/ImageFinder.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/special/fullmaturityrollback/FullMaturityRollbackDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/yibaotong/service/claim/reject/ClaimBatchRejectBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/productliability/ProductLiabilityDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/letters/manualletter/claim/ClaimDataDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/application/edoc/group/UploadDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/dataconver/NBDataConvertDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/dimission/DimissionBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/liabmap/dao/LiabMapDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/servlet/pub/image/ShowImage.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/contractmasterliabhi/ContractMasterLiabHiDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/letters/database/DbLetterManager.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/special/transfer/PolicyTransferDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/queryinterface/json/policy/PolicyInfoQueryDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/renew/report/grouprenew/policyprem/GroupPolicyPremDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/print/batchprint/indi/policyPrint/AccumPolicyPrintDaoImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/liabmap/web/AddAction.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/claim/CaseStatus.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/gl/bnsvoucher/MutiFeeAccountDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/policyproduct/medical/PolicyProductLiabsDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/cancelrevival/CancelRevivalDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/updatebeforevalidation/UpdateBeforeValidationDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/common/validate/ValidateGroupDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ebiz2/renewalquery/RenewalQueryImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/claimlimit/ClaimLimitDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/product/liability/DefineDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/claim/group/ClaimHistoryQuery.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/singleaddinsured/SingleAddInsuredDisposal.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/addrider/AddRiderDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/webservice/engine/model/core/LiabPayParamBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/blacklist/BlacklistDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/liability/policypayment/PolicyPaymentDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/print/batchprint/newgroup/GroupPrintInsuredListDaoImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/dao/policy/BeanPolicyDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/dao/policyprintmain/BeanPolicyPrintMainDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/webservice/service/query/ps/PsContractInsuredQueryDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/mail/renew/RenewTransferDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/group/igp/igpyearpolicyclaim/dao/IgpPolicyClaimDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/yibaotong/service/claim/inspectnew/MeicalInspectNewBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/servlet/customer/callcenter/CustomerDataBatch.java
+../../cbs/cbs/src/main/java/com/ebao/life/servlet/newbiz/entry/XmlInfoServlet.java
+../../cbs/cbs/src/main/java/com/ebao/life/agent_new/agent/SalaryAccountingDisposal.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/claimlevel/ClaimLevelDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/entity/productliability/PolicyPrdLiabParamDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/withdrawbillprint/WithdrawBillPrintDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/specialmap/web/DeleteAction.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/liabilityreduce/LiabilityReduceDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/payment/ebiz/feeconfirm/EbizFeeConfirmDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/universalAddupInvest/UniversalAddupInvestDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/yibaotong/service/totalinfo/TotalInfoBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/servlet/newbiz/entry/updatecustomer/UpdateCustomerDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/uw/uwio/uwapply/UwCandidateDAOClaimImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/yibaotong/service/newbiz/InsurantListProcessDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/config/approval/permission/csapprauto/CsApprAutoDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/webservice/service/ps/alter/universaladdupinvest/UniversalAddupInvestProcess.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/newbiz/bank/Approval_PrintPDFBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/payment/report/incomepayout/IncomePayoutDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/vat/separation/dao/SeparationDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/preentry/group/GroupPreEntryBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/liabmap/web/DeleteAction.java
+../../cbs/cbs/src/main/java/com/ebao/life/uw/main/indv/UwDishonestRepresent.java
+../../cbs/cbs/src/main/java/com/ebao/life/webservice/service/query/ps/InsuredProductQueryDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/groupclaimproduct/GroupClaimProductDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/payment/common/CommonRoutine.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/appentry/CheckInfoDisposal.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/print/batchprint/bank/BankPrintDaoImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/print/pc/api/ProductPrint_63843.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/mortagage/MortagageDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/claim/CasePostil.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/claimpay/ClaimPayDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/gl/report/unpayedreved/UnpayedrevedDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/product/liability/QueryDetailDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/renew/report/ReportDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/policyproblem/PolicyProblemDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/fb/groupnewbiz/service/GroupNewbizDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/liability/liabpayparam/dao/PolicyLiabPayParamDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/accountmap/web/AddAction.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/insuranceplangroup/groupproductinfo/LifePolicyInsurantProductDAODummyImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/policyproduct/medical/MedicalUtil.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/groupoper/service/maturelist/dao/MatureListDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/appentry/batch/AppEntryUtil.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/liability/liabpayparam/dao/ContractLiabPayParamDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/annuitypaytype/AnnuityPayTypeAlterDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/special/maturityrollback/MaturityRollbackDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/webservice/engine/model/core/LiabPayRelativeBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/claim/group/ComputeAudit.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/payment/branch/withdraw/WithdrawChequePrintDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/payment/voucher/DrawVoucherDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/policyproduct/policy/group/liability/LiabilityDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/common/biz/GroupHelp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/surrendertrail/SurrenderTrailDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/domain/dao/ReportSql.java
+../../cbs/cbs/src/main/java/com/ebao/life/workflow/common/framework/UnitsData.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/claim/ClaimHistoryQuery.java
+../../cbs/cbs/src/main/java/com/ebao/life/ebiz2/airpolicyquery/AirPolicyQueryImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ebiz2/policyQuery/PolicyQueryImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/circas/CircAuditSystemDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/yibaotong/service/claim/batch/ClaimBatchBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/callcenter/trans/policyinfo/GetPolicyInfo.java
+../../cbs/cbs/src/main/java/com/ebao/life/ebiz2/policyQuery/PolicyQueryWithGpolicyCustomerInfo.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/investlink/investrevival/InvestRevivalDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/yibaotong/service/cs/groupinginsurantmaintain/GroupingInsurantProcessDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/claim/group/GroupClaim.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/productliabilitychange/ProductLiabilityChangeDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/accupayingchange/AccuPayingChangeDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/fb/service/newbiz/InsurantListProcessDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/payment/branch/withdraw/chequebatch/BatchPrintDAOImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/print/batchprint/group/GroupPrintDaoImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/webservice/engine/model/core/LiabilityConfigBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/claim/CasePrepayBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/liabilitylist/LiabilityListDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/fb/cs/alter/groupinsurantchange/GroupInsurantChangeDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/product/liability/LiabilityDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/liabilitychange/LiabilityChangeDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/liabilitypay/LiabilityPayDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/gl/report/policyfee/PolicyFeeDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/groupclaimcustomer/GroupClaimCustomerDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/liabpayparam/LiabPayParamDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/cashflow/dao/FeeSortDaoImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/policyproduct/insurant/group/LifePolicyInsurantProductDAOGroupImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/policyproduct/policy/group/GroupLifePolicyProduct.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/pub/common/ProductConfigureUtil.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/claiminspection/ClaimInspectionDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/contractgroupliabhi/ContractGroupLiabHiDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/changejob/ChangeJobDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/gl/report/feequery/PolicyFeeDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/policyproduct/insurant/uw/LifePolicyInsurantProductDAOUwImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/query/accidentquery/AccidentMsgQueryBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/payment/branch/withdraw/WithdrawDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/groupoper/claim/claimratio/dao/ClaimRatioDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/uw/uwio/uwapply/UwCandidateDAORenewImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/payliability/PayLiabilityDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/alterscheme/AlterSchemeDisposal.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/maintaininsurant/MinusInsurantDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/print/batchprint/newgroup/GroupPrintDaoImpl_OLD.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/policyendautoprem/PolicyEndAutoPremDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/pub/GrpNewBizUploadWorker.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/liabmap/web/ModifyAction.java
+../../cbs/cbs/src/main/java/com/ebao/life/uw/main/indv/IndvUwBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/ebiz2/renewalinfo/RenewalInfoImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/liability/policyaccutor/PolicyAccutorDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/policyproduct/policy/group/liab/LiabilityDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/webservice/service/query/claim/ClaimStatusQueryDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/policyinsurant/group/LifePolicyInsurantDAOGroupImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/grouppayingwarrant/GroupPayingWarrantDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/esb/listener/ecommerce/GroupNewbizApproDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/gl/BnsVoucherBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/letters/pub/search/SearchDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/print/batchprint/indi/IndiPrintDaoImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/normalcancel/NormalCancelBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/liabpayrelative/LiabPayRelativeDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/fb/claim/service/report/GroupStdClaimDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/payment/batchtransfer/BatchTransferDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/specialmap/web/InitLiabMappingAction.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/payingcollection/PayingCollectionDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/servlet/pub/image/ClaimVideoUploadUtil.java
+../../cbs/cbs/src/main/java/com/ebao/life/letters/browse/GeneLetterQueryDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/alterannuityoption/AlterAnnuityOptionDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/groupinginsurantmaintain/GroupingInsurantMaintainDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/common/validate/ValidateBaseDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/query/transverify/TransVerifyDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/accountgen/bizdatagen/dao/BizDataDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/liabaccutordef/LiabAccutorDefDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/returnreceipt/ReturnReceiptFinder.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/hesitate/cancel/HesitateCancelDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/query/servlet/ClaimQueryWebAction.java
+../../cbs/cbs/src/main/java/com/ebao/life/webservice/service/query/ps/PsContractQueryDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/claim/CaseInspection.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/dao/grouppolicy/BeanGroupPolicyDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/hesitate/reduce/HesitateReduceDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/groupdummyinsuredpara/GetGroupDummyData.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/groupchangesumassured/GroupChangeSumassuredDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/policyliabhi/PolicyLiabHiDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/session/claim/report/Report.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/gl/report/glinterfacequery/search/Search11.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/uwpolicyliabhi/UwPolicyLiabHiDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/print/PolPrintDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/wizard/changeprint/ChangePrintDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/liabilityconfig/LiabilityConfigDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/payment/banktransfer/unsuchandle/UnsucHandleDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/liability/liabrelative/LiabRelativeDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/print/batchprint/group/GroupPrintInsuredListDaoImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/groupaddinsured/GroupAddInsuredDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/system/admin/ClaimLevelOption.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/batchliab/BatchLiabDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/claimbatch/ClaimBatchDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/common/groupingmaintain/groupingproductinfo/DummyProductDAOImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/holding/lossrate/LossRateDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/specialmap/web/AddAction.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/finance/branch/RefundmentConfirmBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/groupsadecrease/GroupSAdecreaseDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/query/servlet/QueryDisposal.java
+../../cbs/cbs/src/main/java/com/ebao/life/rpt/common/IdGetter.java
+../../cbs/cbs/src/main/java/com/ebao/life/webservice/engine/model/core/LiabAccutorDefBean.java
+../../cbs/cbs/src/main/java/com/ebao/life/webservice/service/ps/utils/PSServiceRuleDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/claim/group/CaseAccept.java
+../../cbs/cbs/src/main/java/com/ebao/life/ecif/component/mainservice/ecifcustcomfirm/EcifCustConfirmDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/finance/payment/branch/withdraw/conversion/PayModeSwitchDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/claimadjust/ClaimAdjustDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/product/ratedef/RateDefDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/holding/performance/BsnStatDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/individualoper/biztrace/policymuster/dao/PolicyMusterDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/liability/liabpayparam/dao/PsLiabPayParamDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/wizard/changerecordentry/ChangeRecordEntryDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/renew/service/ServiceDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/servlet/newbizgroup/problem/GPolicySearchServlet.java
+../../cbs/cbs/src/main/java/com/ebao/life/webservice/service/ps/alter/accupayingcollection/AccupayingcollectionDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/webservice/service/query/ps/ReduceAmountPaidQueryDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/bean/claim/BeneficiaryQuery.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/entity/productliability/PolicyProdLiabDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/groupnormalrevival/GroupNormalRevivalDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/product/pub/XmlInfoServlet.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/wizard/effectivity/medicalsys/PSPushAllInfoDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/query/clientreviewnew/ClientReviewDisposal.java
+../../cbs/cbs/src/main/java/com/ebao/life/query/ebiz/balancequery/EbizBalanceQueryDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/uwgrouppolicyliabhi/UwGroupPolicyLiabHiDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/letters/lettermanagement/LetterListManagementDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/letters/pub/lifelettersearch/SearchDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/statement/statepool/StatePoolQueryDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/mail/claim/BenePayeeMailProcessDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/newbiz/print/batchprint/newgroup/GroupPrintDaoImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/payingwarrant/PayingWarrantDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/specialmap/web/ModifyAction.java
+../../cbs/cbs/src/main/java/com/ebao/life/servlet/newbiz/problem/PolicySearchServlet.java
+../../cbs/cbs/src/main/java/com/ebao/life/ejb/entity/claimproduct/ClaimProductDAOOracleImp.java
+../../cbs/cbs/src/main/java/com/ebao/life/pub/backgroundcall/BackgroundCallDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/queryinterface/json/claim/ClaimQueryDao.java
+../../cbs/cbs/src/main/java/com/ebao/life/servlet/pub/image/ShowImageCaseServlet.java
+../../cbs/cbs/src/main/java/com/ebao/life/yibaotong/service/claim/queryAmount/QueryAmountServiceImpl.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/alter/normalcancel/NormalCancelDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/ps/special/invalidrollback/InvalidRollbackDAO.java
+../../cbs/cbs/src/main/java/com/ebao/life/report/layout/circ/accountrpttmp/CircSystemDAO.java
