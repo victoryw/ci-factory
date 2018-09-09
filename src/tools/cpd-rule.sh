@@ -1,6 +1,6 @@
  #!/bin/bash
 
-$0 --minimum-tokens 300 --files ./cbs > $1
+/pmd/bin/Run.sh --minimum-tokens 300 --files ./cbs > $1
 
 status=$?
 
