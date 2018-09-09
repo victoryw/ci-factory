@@ -1,10 +1,13 @@
 package tequlia.report.analyze
 
-assert args.size() == 1
+assert args.size() == 3
 def claimToOtherDbFilePath = args[0]
+def outFilePath = args[1]
+def lastSucceedOutFilePath = args[2]
 
 def claimJavaToDbDepend = resolveJavaToDbFile(claimToOtherDbFilePath)
 print("source is $claimJavaToDbDepend.source, sp is $claimJavaToDbDepend.sp, table is $claimJavaToDbDepend.table")
+outputToCsv(outFilePath, lastSucceedOutFilePath, claimJavaToDbDepend.sp, claimJavaToDbDepend.table)
 
 enum RowContentType {
     SP,
@@ -69,4 +72,29 @@ static def resolveJavaToDbFile(String filePath) {
     }
 
     return [source: filePath, sp: spDepCount, table: tableDepCount]
+}
+
+static def outputToCsv(String outputCsvPath, String lastSucceedOutFilePath,
+                       int claimJavaToOtherSpCount,
+                       int claimJavaToOtherTableCount) {
+    def csvFile = new File(outputCsvPath);
+    if (csvFile.exists()) {
+        csvFile.delete()
+    }
+
+    def lastCsvFile = new File(lastSucceedOutFilePath);
+    csvFile.parentFile.mkdir()
+    if (!lastCsvFile.exists()) {
+        csvFile.withWriter {
+            out -> out.println 'Date, claimJavaToOtherSp, claimJavaToOtherTable'
+        }
+    } else {
+        csvFile << lastCsvFile.text
+    }
+
+    def today = new Date().format('yyyy-MM-dd')
+
+    csvFile.withWriterAppend {
+        out -> out.println "$today, $claimJavaToOtherSpCount, $claimJavaToOtherTableCount"
+    }
 }

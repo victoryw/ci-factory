@@ -24,6 +24,7 @@ job(jobName){
             includePatterns("result/${dailyReportFileName}")
             targetDirectory('lastSucceed')
             flatten()
+            optional(true)
         }
 
         groovyScriptFile('tools/TequliaReportAnalyzer') {
