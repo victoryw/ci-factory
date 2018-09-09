@@ -22,12 +22,6 @@ outputToCsv(outFilePath, lastSucceedOutFilePath,
         nonClaimJavaToDbDepend.sp, nonClaimJavaToDbDepend.table,
         claimSpToNoClaimSpDepend.sp, nonClaimSpToClaimSpDepend.sp)
 
-enum RowContentType {
-    SP,
-    TABLE,
-    OTHER
-}
-
 static def getRowType(int splitCount) {
     if (splitCount == 0)
         return RowContentType.SP
