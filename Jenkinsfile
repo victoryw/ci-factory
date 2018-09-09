@@ -7,6 +7,10 @@ node {
         archiveArtifacts artifacts: 'src/tools/**/*', onlyIfSuccessful: true
     }
 
+    stage('UPLOAD EXAMPLE') {
+        archiveArtifacts artifacts: 'src/demo/**/*'
+    }
+
 
     stage('CREATE SEED JOB') {
         jobDsl targets: ['./src/jobs/**/*.groovy'].join('\n'),
