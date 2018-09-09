@@ -3,14 +3,19 @@ import com.victoryw.jenkins.job.builder.scaffold.block.ScmTrigger
 
 def jobName = 'cbs-cpd-check'
 def trigger = 'H/2 * * * *'
+def cpdRuleWrapperPath = './tools/src/tools/cpd-rule.sh'
+def toolsSourceJobName = 'ci-factory';
+def pmdScriptPath = '/pmd/bin/Run.sh'
+def cpdSrcPath = './src'
+
 def resultFolder = 'result/'
 def cpdReportFileName='duplication-summary-report.txt'
-def currentCpdReportFilePath = "${resultFolder}${cpdReportFileName}"
-def cpdRuleWrapperPath = './tools/src/tools/cpd-rule.sh'
-def pmdScriptPath = '/pmd/bin/Run.sh'
-def toolsSourceJobName = 'ci-factory';
+def currentCpdSummaryReportFilePath = "${resultFolder}${cpdReportFileName}"
+def currentCpdDetailReportFilePath="${resultFolder}duplication-detail-report.txt"
+
 def lastSucceedFileFolderPath = 'lastSucceed/'
 def lastSucceedFilePath = "$lastSucceedFileFolderPath$cpdReportFileName"
+
 job(jobName) {
     description(jobName)
 
@@ -48,11 +53,20 @@ job(jobName) {
         """)
 
         shell("chmod +x ${cpdRuleWrapperPath}")
-        shell("${cpdRuleWrapperPath} ${pmdScriptPath} $currentCpdReportFilePath")
+        shell("${cpdRuleWrapperPath} ${pmdScriptPath} ${cpdSrcPath} ${currentCpdDetailReportFilePath}")
 
-        shell("groovy tools/src/tools/CountCPD.groovy > ${currentCpdReportFilePath}")
+        groovyScriptFile("tools/src/tools/CountCPD.groovy") {
+            groovyInstallation('groovy')
+            scriptParam(currentCpdDetailReportFilePath)
+            scriptParam(currentCpdSummaryReportFilePath)
 
-        shell("groovy tools/src/tools/ValidCpdIncremental.groovy $lastSucceedFilePath $currentCpdReportFilePath")
+        }
+
+        groovyScriptFile('tools/src/tools/ValidCpdIncremental.groovy') {
+            groovyInstallation('groovy')
+            scriptParam(lastSucceedFilePath)
+            scriptParam(currentCpdSummaryReportFilePath)
+        }
 
         publishers {
             archiveArtifacts {

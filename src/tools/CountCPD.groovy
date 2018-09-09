@@ -1,6 +1,6 @@
+def duplicationDetailReportPath = args[0]
+def duplicationSummaryReportPath = args[1]
 
-
-def duplicationDetailReportPath = './result/duplication-detail-report.txt'
 def file = new File(duplicationDetailReportPath)
 
 def duplicateLineFoundRegx = /Found a (\d+) line/
@@ -22,10 +22,17 @@ file.eachLine {
 
         def matchDuplicatedFileMatcher = (it =~ duplicatedFileRegx);
         if (matchDuplicatedFileMatcher.find()) {
-            lastDuplicatedFileCount ++;
+            lastDuplicatedFileCount++;
             return
         }
 
         return
 }
-println totalDuplicatedLineCount;
+
+
+def summaryFile = new File(duplicationSummaryReportPath)
+if (summaryFile.exists()) {
+    summaryFile.delete()
+}
+summaryFile.createNewFile()
+summaryFile << totalDuplicatedLineCount
