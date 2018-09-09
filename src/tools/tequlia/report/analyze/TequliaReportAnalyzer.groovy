@@ -1,18 +1,26 @@
 package tequlia.report.analyze
 
-assert args.size() == 4
+assert args.size() == 6
 def claimToOtherDbFilePath = args[0]
 def nonClaimToOtherDbFilePath = args[1]
-def outFilePath = args[2]
-def lastSucceedOutFilePath = args[3]
+def claimSpToOtherSpFilePath = args[2]
+def OtherSpToClaimSpFilePath = args[3]
+def outFilePath = args[4]
+def lastSucceedOutFilePath = args[5]
 
 def claimJavaToDbDepend = resolveJavaToDbFile(claimToOtherDbFilePath)
-def nonClaimJavaToDbDepend = resolveJavaToDbFile(nonClaimToOtherDbFilePath)
 print("source is $claimJavaToDbDepend.source, sp is $claimJavaToDbDepend.sp, table is $claimJavaToDbDepend.table")
+def nonClaimJavaToDbDepend = resolveJavaToDbFile(nonClaimToOtherDbFilePath)
 print("source is $nonClaimJavaToDbDepend.source, sp is $nonClaimJavaToDbDepend.sp, table is $nonClaimJavaToDbDepend.table")
+def claimSpToNoClaimSpDepend = resolveSpToSpFile(claimSpToOtherSpFilePath)
+print("source is $claimSpToNoClaimSpDepend.source, sp is $claimSpToNoClaimSpDepend.sp")
+def nonClaimSpToClaimSpDepend = resolveSpToSpFile(OtherSpToClaimSpFilePath)
+print("source is $nonClaimSpToClaimSpDepend.source, sp is $nonClaimSpToClaimSpDepend.sp")
+
 outputToCsv(outFilePath, lastSucceedOutFilePath,
         claimJavaToDbDepend.sp, claimJavaToDbDepend.table,
-        nonClaimJavaToDbDepend.sp, nonClaimJavaToDbDepend.table)
+        nonClaimJavaToDbDepend.sp, nonClaimJavaToDbDepend.table,
+        claimSpToNoClaimSpDepend.sp, nonClaimSpToClaimSpDepend.sp)
 
 enum RowContentType {
     SP,
@@ -37,19 +45,42 @@ static def getTheDependCount(String rowContent) {
     [name: deps[0].trim(), count: depCount]
 }
 
+static def resolveSpToSpFile(String filePath) {
+    def spToOtherSpFile = new File(filePath)
+
+    if (!spToOtherSpFile.exists()) {
+        throw new Exception("$filePath report file is missing")
+    }
+
+    def spBeginToken = '  '
+    def spToOtherSpCount = 0
+    spToOtherSpFile.eachLine {
+        it ->
+            if (it.isEmpty()) {
+                return
+            }
+
+            if (it.startsWith(spBeginToken)) {
+                spToOtherSpCount = spToOtherSpCount + 1
+            }
+            return
+    }
+
+    return [source: filePath, sp: spToOtherSpCount]
+}
+
 static def resolveJavaToDbFile(String filePath) {
     def splitCount = 0;
     def spBeginToken = '  '
-    def claimToOtherDbFile = new File(filePath)
-    if (!claimToOtherDbFile.exists()) {
-        throw new Exception('claim to other db report file is missing')
+    def javaToOtherDbFile = new File(filePath)
+    if (!javaToOtherDbFile.exists()) {
+        throw new Exception("$filePath report file is missing")
     }
 
-    def rowContentType = RowContentType.SP
     def spDepCount = 0
     def tableDepCount = 0
 
-    claimToOtherDbFile.eachLine {
+    javaToOtherDbFile.eachLine {
         it ->
             if (it.isEmpty()) {
                 return
@@ -80,10 +111,12 @@ static def resolveJavaToDbFile(String filePath) {
 }
 
 static def outputToCsv(String outputCsvPath, String lastSucceedOutFilePath,
-                       int claimJavaToOtherSpCount,
-                       int claimJavaToOtherTableCount,
-                       int nonClaimJavaToOtherSpCount,
-                       int nonClaimJavaToOtherTableCount) {
+                       int claimJavaToNonClaimSpCount,
+                       int claimJavaToNonClaimTableCount,
+                       int nonClaimJavaToClaimSpCount,
+                       int nonClaimJavaToClaimTableCount,
+                       int claimSpToNonClaimSpCount,
+                       int NonClaimSpToClaimSpCount) {
     def csvFile = new File(outputCsvPath);
     if (csvFile.exists()) {
         csvFile.delete()
@@ -93,7 +126,9 @@ static def outputToCsv(String outputCsvPath, String lastSucceedOutFilePath,
     csvFile.parentFile.mkdir()
     if (!lastCsvFile.exists()) {
         csvFile.withWriter {
-            out -> out.println 'Date, claimJavaToOtherSp, claimJavaToOtherTable, nonClaimJavaToOtherSp, nonClaimJavaToOtherTable'
+            out -> out.println 'Date, claimJavaToNonClaimSp, claimJavaToNonClaimTable, ' +
+                    'nonClaimJavaToClaimSp, nonClaimJavaToClaimTable,' +
+                    'claimSpToNoClaimSpCount, nonClaimSpToClaimSpCount'
         }
     } else {
         csvFile << lastCsvFile.text
@@ -101,8 +136,9 @@ static def outputToCsv(String outputCsvPath, String lastSucceedOutFilePath,
 
     def today = new Date().format('yyyy-MM-dd')
 
-    def todayRecord = "$today, $claimJavaToOtherSpCount, $claimJavaToOtherTableCount, " +
-            "$nonClaimJavaToOtherSpCount, $nonClaimJavaToOtherTableCount"
+    def todayRecord = "$today, $claimJavaToNonClaimSpCount,$claimJavaToNonClaimTableCount" +
+            ",$nonClaimJavaToClaimSpCount,$nonClaimJavaToClaimTableCount" +
+            ",$claimSpToNonClaimSpCount,$NonClaimSpToClaimSpCount"
 
     csvFile.withWriterAppend {
         out ->

@@ -32,6 +32,8 @@ job(jobName){
             groovyInstallation('groovy')
             scriptParam('demo/tequlia-java-db.out')
             scriptParam('demo/non-claim-java-to-db.out')
+            scriptParam('demo/claim-db-to-other-db.out')
+            scriptParam('demo/other-db-to-claim-db.out')
             scriptParam("result/${dailyReportFileName}")
             scriptParam("lastSucceed/${dailyReportFileName}")
         }
