@@ -1,6 +1,6 @@
  #!/bin/bash
 
-/usr/local/lib/tw-tools/pmd/bin/run.sh cpd --minimum-tokens 300 --files ./cbs > ./result/duplication-detail-report.txt
+$0 --minimum-tokens 300 --files ./cbs > $1
 
 status=$?
 

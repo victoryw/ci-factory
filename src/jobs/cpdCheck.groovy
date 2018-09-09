@@ -7,6 +7,7 @@ def resultFolder = 'result/'
 def cpdReportFileName='duplication-summary-report.txt'
 def currentCpdReportFilePath = "${resultFolder}${cpdReportFileName}"
 def cpdRuleWrapperPath = './tools/src/tools/cpd-rule.sh'
+def pmdScriptPath = '/pmd/bin/Run.sh'
 def toolsSourceJobName = 'ci-factory';
 def lastSucceedFileFolderPath = 'lastSucceed/'
 def lastSucceedFilePath = "$lastSucceedFileFolderPath$cpdReportFileName"
@@ -47,7 +48,7 @@ job(jobName) {
         """)
 
         shell("chmod +x ${cpdRuleWrapperPath}")
-        shell("${cpdRuleWrapperPath}")
+        shell("${cpdRuleWrapperPath} ${pmdScriptPath} $currentCpdReportFilePath")
 
         shell("groovy tools/src/tools/CountCPD.groovy > ${currentCpdReportFilePath}")
 
