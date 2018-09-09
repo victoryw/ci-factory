@@ -10,7 +10,9 @@ job(jobName){
     steps {
         copyArtifacts('ci-factory') {
             includePatterns("src/demo/tequlia-java-db.out",
-                    "src/demo/non-claim-java-to-db.out")
+                    "src/demo/non-claim-java-to-db.out",
+                    "src/demo/claim-db-to-other-db.out",
+                    "src/demo/other-db-to-claim-db.out")
             targetDirectory('demo')
             flatten()
         }
