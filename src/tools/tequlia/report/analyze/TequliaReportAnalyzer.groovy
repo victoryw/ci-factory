@@ -1,3 +1,5 @@
+package tequlia.report.analyze
+
 assert args.size() == 6
 def claimToOtherDbFilePath = args[0]
 def nonClaimToOtherDbFilePath = args[1]

@@ -19,8 +19,7 @@ job(jobName){
 
         copyArtifacts('ci-factory') {
             includePatterns("src/tools/tequlia/report/analyze/**/*")
-            targetDirectory('tools')
-            flatten()
+            targetDirectory('tools/')
         }
 
         copyArtifacts(jobName) {
