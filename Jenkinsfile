@@ -8,7 +8,7 @@ node {
     }
 
     stage('UPLOAD EXAMPLE') {
-        archiveArtifacts artifacts: 'src/demo/**/*'
+        archiveArtifacts artifacts: 'src/demo/**/*Job.groovy'
     }
 
 
