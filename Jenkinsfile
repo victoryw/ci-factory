@@ -8,12 +8,12 @@ node {
     }
 
     stage('UPLOAD EXAMPLE') {
-        archiveArtifacts artifacts: 'src/demo/**/*Job.groovy'
+        archiveArtifacts artifacts: 'src/demo/**/*'
     }
 
 
     stage('CREATE SEED JOB') {
-        jobDsl targets: ['./src/jobs/**/*.groovy'].join('\n'),
+        jobDsl targets: ['./src/jobs/**/*Job.groovy'].join('\n'),
                 removedJobAction: 'DELETE',
                 removedViewAction: 'DELETE',
                 lookupStrategy: 'SEED_JOB',
