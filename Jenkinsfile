@@ -1,6 +1,6 @@
 node {
     stage('CHECKOUT') {
-        git url: ' https://github.com/victoryw/ci-factory.git'
+        git url: 'https://github.com/victoryw/ci-factory.git'
     }
 
     stage('UPLOAD TOOLS') {
