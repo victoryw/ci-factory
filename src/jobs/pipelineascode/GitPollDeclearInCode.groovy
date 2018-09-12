@@ -1,6 +1,13 @@
 package pipelineascode
 
+import com.victoryw.jenkins.job.builder.scaffold.block.ScmTrigger
+
+def trigger = 'H/2 * * * *'
 pipelineJob('git-poll-declare-in-code') {
+    new ScmTrigger().
+            cronExpression(trigger).
+            createScmTrigger(delegate)
+
     definition {
         cps {
             sandbox()
