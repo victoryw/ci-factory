@@ -17,9 +17,9 @@ job(jobName){
             flatten()
         }
 
-        def scriptFolderPath = '/tequlia/report/analyze/'
+        def scriptFolderPath = 'src/tools/tequlia/report/analyze/'
         copyArtifacts('ci-factory') {
-            includePatterns("src/tools/$scriptFolderPath/**/*")
+            includePatterns("$scriptFolderPath/**/*")
             targetDirectory('tools/')
         }
 
