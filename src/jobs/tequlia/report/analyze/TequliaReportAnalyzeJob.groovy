@@ -17,8 +17,9 @@ job(jobName){
             flatten()
         }
 
+        def scriptFolderPath = '/tequlia/report/analyze/'
         copyArtifacts('ci-factory') {
-            includePatterns("src/tools/tequlia/report/analyze/**/*")
+            includePatterns("src/tools/$scriptFolderPath/**/*")
             targetDirectory('tools/')
         }
 
@@ -29,9 +30,7 @@ job(jobName){
             optional(true)
         }
 
-
-
-        groovyScriptFile('./tools/TequliaReportAnalyzer') {
+        groovyScriptFile("./tools/$scriptFolderPath/TequliaReportAnalyzer") {
             classpath('$WORKSPACE/tools')
             groovyInstallation('groovy')
             scriptParam('demo/tequlia-java-db.out')
