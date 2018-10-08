@@ -32,7 +32,7 @@ job(jobName){
         }
 
         groovyScriptFile("./tools/$scriptFolderPath/TequliaReportAnalyzer") {
-            classpath("$WORKSPACE/tools/$packageParentPath")
+            classpath("/tools/$packageParentPath")
             groovyInstallation('groovy')
             scriptParam('demo/tequlia-java-db.out')
             scriptParam('demo/non-claim-java-to-db.out')
