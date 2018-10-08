@@ -22,8 +22,8 @@ class MonitorJobBuilder {
         def job = dslFactory.job(jobName)
         job.with {
             description jobDescription
-
         }
+
         job.with {
             scm {
                 git {
@@ -61,6 +61,10 @@ echo \${BUILD_NUMBER} > 1.out''')
                     archiveArtifacts archiveArtifactsPath
                 }
             }
+        }
+
+        job.steps {
+            shell('echo 111');
         }
         return job;
     }
