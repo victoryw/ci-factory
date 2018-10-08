@@ -19,10 +19,12 @@ class MonitorJobBuilder {
         assert triggers != null
         assert validateFilesPath != null
 
-        dslFactory.job(jobName) {
+        def job = dslFactory.job(jobName)
+        job.with {
             description jobDescription
 
-
+        }
+        job.with {
             scm {
                 git {
                     remote {
@@ -54,13 +56,13 @@ echo \${BUILD_NUMBER} > 1.out''')
                 shell("cat latestSucceed/${archiveArtifactsPath}")
             }
 
-            if(archiveArtifactsPath) {
+            if (archiveArtifactsPath) {
                 publishers {
                     archiveArtifacts archiveArtifactsPath
                 }
             }
         }
-
+        return job;
     }
 
 }
